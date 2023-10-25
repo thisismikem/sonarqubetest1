@@ -1,10 +1,12 @@
-package com.example.springboot;
+package com.example.springboot.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.example.springboot.services.WelcomeService;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.verify;
@@ -14,28 +16,36 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-class WelcomeControllerAcceptanceTest {
+@WebMvcTest
+class WelcomeControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private WelcomeService welcomeService;
+
     @Test
     void shouldGetDefaultWelcomeMessage() throws Exception {
-
+        when(welcomeService
+                .getWelcomeMessage("Stranger"))
+                .thenReturn("Welcome Stranger!");
         mockMvc.perform(get("/welcome"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Welcome Stranger!")));
+        verify(welcomeService).getWelcomeMessage("Stranger");
     }
 
     @Test
     void shouldGetCustomWelcomeMessage() throws Exception {
+        when(welcomeService
+                .getWelcomeMessage("Abc"))
+                .thenReturn("Welcome Abcd!");
         mockMvc.perform(get("/welcome?name=Abc"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Welcome Abc!")));
+                .andExpect(content().string(equalTo("Welcome Abcd!")));
+        verify(welcomeService).getWelcomeMessage("Abc");
     }
-
 }

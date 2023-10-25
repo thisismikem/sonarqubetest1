@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.example.springboot.controller;
 
 import com.example.springboot.controller.WelcomeController;
 import com.example.springboot.services.WelcomeService;

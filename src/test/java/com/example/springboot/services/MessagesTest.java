@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.example.springboot.services;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
