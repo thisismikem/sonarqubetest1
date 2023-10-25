@@ -51,7 +51,7 @@ pipeline{
                     
                     withSonarQubeEnv(credentialsId: 'sonar-api') {
                         
-                        bat 'mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.issuesReport.html.enable=true'
+                        bat 'mvn sonar:sonar -Dsonar.issuesreport.html.enable=true'
                     }
                    }
                     
