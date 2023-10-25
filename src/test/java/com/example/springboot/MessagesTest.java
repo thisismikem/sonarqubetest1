@@ -26,5 +26,11 @@ class MessagesTest {
         Messages obj = new Messages();
         Assertions.assertEquals("Please Provide a name!", obj.getMessage(null));
     }
+    
+    @Test
+    void testMessage2() {
+    	Messages obj = new Messages();
+        Assertions.assertEquals("ABC", obj.getMessage2());
+    }
 
 }
