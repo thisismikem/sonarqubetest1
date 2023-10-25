@@ -15,7 +15,6 @@ pipeline{
             }
         }
         stage('UNIT testing'){
-            echo 'UNIT testing'
             steps{
                 
                 script{
