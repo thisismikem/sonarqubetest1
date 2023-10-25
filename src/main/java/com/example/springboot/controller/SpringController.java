@@ -11,7 +11,6 @@ public class SpringController {
 	@GetMapping(value = "/")
 	public String getValue() {
 		val++;
-		String result = "Mr. DevOps" + val;
-		return result;
+		return "Mr. DevOps" + val;
 	}
 }
