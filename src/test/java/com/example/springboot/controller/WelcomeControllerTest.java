@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;
 
-class WelcomeControllerUnitTest {
+class WelcomeControllerTest {
     @Test
     void shouldWelcome() {
         WelcomeService welcomeService = Mockito.mock(WelcomeService.class);
