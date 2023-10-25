@@ -51,7 +51,7 @@ pipeline{
                     
                     withSonarQubeEnv(credentialsId: 'sonar-api') {
                         
-                        bat 'mvn sonar:sonar -Dsonar.issuesreport.html.enable=true'
+                        bat 'mvn clean package sonar:sonar'
                     }
                    }
                     
