@@ -15,4 +15,9 @@ public class Messages {
         }
         return s.toString();
     }
+    
+    public String getMessage2(String name)
+    {
+        return "ABC";
+    }
 }
