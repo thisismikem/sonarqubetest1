@@ -15,12 +15,12 @@ pipeline{
             }
         }
         stage('UNIT testing'){
-            
+            echo 'UNIT testing'
             steps{
                 
                 script{
                     
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
